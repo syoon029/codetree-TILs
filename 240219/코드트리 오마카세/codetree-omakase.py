@@ -19,7 +19,6 @@ def rotate(table):
 def eat(table, method, people_location, eaten):
         global people
         global sushi
-        rotate(table)
 
         for name in eaten.keys():
             if(name in table[people_location[name]] and eaten[name] > 0):
@@ -39,6 +38,7 @@ for i in range(q):
 
     if(a[0] == '100'): # 초밥만들기
         if(people > 0):
+            rotate(table)
             eat(table, method, people_location, eaten)
         else:
             rotate(table)
@@ -59,6 +59,7 @@ for i in range(q):
                 eaten[name] = -1
 
     elif(a[0] == '200'): # 손님오기
+        rotate(table)
         method, t, x, name, n = a
         people += 1
    
@@ -68,7 +69,6 @@ for i in range(q):
         n = int(n)
         people_location[name] = x
         eaten[name] = n
-
         eat(table, method, people_location, eaten)
         
     
@@ -76,6 +76,7 @@ for i in range(q):
         method, t = a
         t = int(t)
         for i in range(t - curr_time):
+            rotate(table)
             eat(table, method, people_location, eaten)
             
         curr_time = t
