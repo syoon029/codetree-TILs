@@ -21,14 +21,15 @@ def eat(table, method, people_location, eaten):
         global sushi
 
         for name in eaten.keys():
-            if(name in table[people_location[name]] and eaten[name] > 0):
-                table[people_location[name]].remove(name)
-                sushi -= 1
-                eaten[name] -= 1
+            for i in range(eaten[name]):
+                if(name in table[people_location[name]] and eaten[name] > 0):
+                    table[people_location[name]].remove(name)
+                    sushi -= 1
+                    eaten[name] -= 1
 
-            if (eaten[name] == 0):
-                people -= 1
-                eaten[name] = -1
+                if (eaten[name] == 0):
+                    people -= 1
+                    eaten[name] = -1
 
         
 
